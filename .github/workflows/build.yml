@@ -21,12 +21,12 @@ jobs:
       run: dotnet restore
 
     - name: Build project
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build EmployeeManagementSystem.csproj --configuration Release --no-restore
 
     - name: Publish project
-      run: dotnet publish -c Release -o publish
+      run: dotnet publish EmployeeManagementSystem.csproj -c Release -o publish
 
-    - name: Write appsettings.json from secrets
+    - name: Write appsettings.json from secret
       run: |
         echo "${{ secrets.APPSETTINGS_JSON }}" > publish/appsettings.json
         echo "${{ secrets.APPSETTINGS_DEV_JSON }}" > publish/appsettings.Development.json
@@ -35,7 +35,7 @@ jobs:
       uses: appleboy/scp-action@v0.1.4
       with:
         host: ${{ secrets.EC2_HOST }}
-        username: ubuntu
+        username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.DEPLOY_KEY }}
         source: "publish/*"
         target: "/home/ubuntu/employee-app"
@@ -44,10 +44,11 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.EC2_HOST }}
-        username: ubuntu
+        username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.DEPLOY_KEY }}
         script: |
           pkill -f EmployeeManagementSystem.dll || true
           cd /home/ubuntu/employee-app
           chmod +x EmployeeManagementSystem.dll
-          nohup dotnet EmployeeManagementSystem.dll > output.log 2>&1 &
+          nohup dotnet EmployeeManagementSystem.dll > output.log 2>&1 </dev/null &
+          echo "Application restarted successfully!"
