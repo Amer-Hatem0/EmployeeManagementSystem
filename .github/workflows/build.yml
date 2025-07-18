@@ -26,6 +26,11 @@ jobs:
     - name: Publish project
       run: dotnet publish -c Release -o publish
 
+    - name: Write appsettings.json from secrets
+      run: |
+        echo "${{ secrets.APPSETTINGS_JSON }}" > publish/appsettings.json
+        echo "${{ secrets.APPSETTINGS_DEV_JSON }}" > publish/appsettings.Development.json
+
     - name: Upload published files to EC2
       uses: appleboy/scp-action@v0.1.4
       with:
