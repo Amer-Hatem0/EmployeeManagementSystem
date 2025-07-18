@@ -2,6 +2,7 @@
 {
     public class EmployeePhotoUploadDto
     {
+
         public IFormFile File { get; set; } = null!;
     }
 }

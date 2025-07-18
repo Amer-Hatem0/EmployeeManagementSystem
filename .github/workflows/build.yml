@@ -45,7 +45,7 @@ jobs:
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
-        key: ${{ secrets.DEPLOY_KEY }}
+        key: ${{ secrets.DEPLOY_KEY }} 
         script: |
           pkill -f EmployeeManagementSystem.dll || true
           cd /home/ubuntu/employee-app
