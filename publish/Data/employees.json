@@ -1,0 +1,90 @@
+[
+  {
+    "Id": 1,
+    "Name": "Ali Hassan",
+    "Department": "IT",
+    "Salary": 6000,
+    "JoiningDate": "2020-01-05T00:00:00",
+    "PhotoUrl": "https://employee-management-photos.s3.amazonaws.com/employee-1-37fe2f04-b509-436e-bb4c-9a4bd669c0ee.png"
+  },
+  {
+    "Id": 2,
+    "Name": "Sara Younes",
+    "Department": "HR",
+    "Salary": 5000,
+    "JoiningDate": "2019-03-15T00:00:00",
+    "PhotoUrl": null
+  },
+  {
+    "Id": 3,
+    "Name": "Khaled Updated",
+    "Department": "Finance",
+    "Salary": 9000,
+    "JoiningDate": "2021-06-10T00:00:00",
+    "PhotoUrl": null
+  },
+  {
+    "Id": 4,
+    "Name": "Lina Saleh",
+    "Department": "Marketing",
+    "Salary": 6200,
+    "JoiningDate": "2022-02-01T00:00:00",
+    "PhotoUrl": null
+  },
+  {
+    "Id": 5,
+    "Name": "Mohammad Zaid",
+    "Department": "IT",
+    "Salary": 7100,
+    "JoiningDate": "2018-11-20T00:00:00",
+    "PhotoUrl": null
+  },
+  {
+    "Id": 6,
+    "Name": "Rana Qassem",
+    "Department": "HR",
+    "Salary": 4800,
+    "JoiningDate": "2023-04-10T00:00:00",
+    "PhotoUrl": null
+  },
+  {
+    "Id": 7,
+    "Name": "Omar Fathi",
+    "Department": "Finance",
+    "Salary": 7900,
+    "JoiningDate": "2017-07-25T00:00:00",
+    "PhotoUrl": null
+  },
+  {
+    "Id": 8,
+    "Name": "Dina Hani",
+    "Department": "Marketing",
+    "Salary": 5400,
+    "JoiningDate": "2020-10-12T00:00:00",
+    "PhotoUrl": null
+  },
+  {
+    "Id": 9,
+    "Name": "Tariq Samir",
+    "Department": "IT",
+    "Salary": 8300,
+    "JoiningDate": "2016-01-18T00:00:00",
+    "PhotoUrl": null
+  },
+  {
+    "Id": 10,
+    "Name": "Nour Adel",
+    "Department": "Finance",
+    "Salary": 6700,
+    "JoiningDate": "2021-12-30T00:00:00",
+    "PhotoUrl": null
+  },
+  {
+    "Id": 11,
+    "Name": "Zain Ali",
+    "Department": "HR",
+    "Salary": 5500,
+    "JoiningDate": "2024-01-01T00:00:00",
+    "PhotoUrl": null
+  }
+]

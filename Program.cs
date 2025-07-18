@@ -19,6 +19,9 @@ namespace EmployeeManagementSystem
 
             builder.Host.UseSerilog();
 
+            // ? Configure to listen on all interfaces on port 5000
+            builder.WebHost.UseUrls("http://0.0.0.0:5000");
+
             // Register services
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -30,7 +33,7 @@ namespace EmployeeManagementSystem
 
             var app = builder.Build();
 
-            // Log environment
+            // Log environment info
             Log.Information("Environment: {Env}", app.Environment.EnvironmentName);
 
             if (app.Environment.IsDevelopment())
