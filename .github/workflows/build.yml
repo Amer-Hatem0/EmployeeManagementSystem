@@ -21,9 +21,11 @@ jobs:
       run: dotnet restore
 
     - name: Build project
+       
       run: dotnet build EmployeeManagementSystem.csproj --configuration Release --no-restore
 
     - name: Publish project
+      
       run: dotnet publish EmployeeManagementSystem.csproj -c Release -o publish
 
     - name: Write appsettings.json from secret
@@ -38,7 +40,7 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.DEPLOY_KEY }}
         source: "publish/*"
-        target: "/home/ubuntu/employee-app"
+        target: "/home/ubuntu/employee-app"  
 
     - name: Restart app on EC2
       uses: appleboy/ssh-action@master
@@ -46,12 +48,13 @@ jobs:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.DEPLOY_KEY }}
+      
+        command_timeout: 300  
         script: |
-          echo "🔁 Killing old process..."
+         
           pkill -f EmployeeManagementSystem.dll || true
-          cd /home/ubuntu/employee-app
-
-          echo "✅ Starting app in background..."
-          nohup dotnet EmployeeManagementSystem.dll > output.log 2>&1 &
-          disown
-          echo "🚀 App restarted successfully!"
+           cd /home/ubuntu/employee-app
+           chmod +x EmployeeManagementSystem.dll
+          nohup dotnet EmployeeManagementSystem.dll > output.log 2>&1 </dev/null &
+         
+          echo "Application restarted successfully!"
