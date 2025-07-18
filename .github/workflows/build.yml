@@ -45,10 +45,13 @@ jobs:
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
-        key: ${{ secrets.DEPLOY_KEY }} 
+        key: ${{ secrets.DEPLOY_KEY }}
         script: |
+          echo "🔁 Killing old process..."
           pkill -f EmployeeManagementSystem.dll || true
           cd /home/ubuntu/employee-app
-          chmod +x EmployeeManagementSystem.dll
-          nohup dotnet EmployeeManagementSystem.dll > output.log 2>&1 </dev/null &
-          echo "Application restarted successfully!"
+
+          echo "✅ Starting app in background..."
+          nohup dotnet EmployeeManagementSystem.dll > output.log 2>&1 &
+          disown
+          echo "🚀 App restarted successfully!"
